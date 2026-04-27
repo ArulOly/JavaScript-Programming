@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz App</title>
+</head>
+<body>
+  <h2>Simple Quiz</h2>
+  <div id="question"></div>
+  <button onclick="checkAnswer('A')">A</button>
+  <button onclick="checkAnswer('B')">B</button>
+  <button onclick="checkAnswer('C')">C</button>
+  <button onclick="checkAnswer('D')">D</button>
+  <p id="result"></p>
+
+  <script>
+    let questions = [
+      {q: "What does JS stand for?", answer: "A"},
+      {q: "Which symbol is used for comments?", answer: "C"}
+    ];
+    let current = 0;
+    let score = 0;
+
+    function showQuestion() {
+      document.getElementById("question").innerHTML = questions[current].q;
+    }
+
+    function checkAnswer(choice) {
+      if (choice === questions[current].answer) {
+        score++;
+        document.getElementById("result").innerHTML = "Correct!";
+      } else {
+        document.getElementById("result").innerHTML = "Wrong!";
+      }
+      current++;
+      if (current < questions.length) {
+        showQuestion();
+      } else {
+        document.getElementById("question").innerHTML = "Quiz finished! Score: " + score;
+      }
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
