@@ -1,0 +1,20 @@
+let playlist = [];
+
+function addSong(song) {
+  playlist.push(song);
+  console.log(`${song} added to playlist`);
+}
+
+function removeSong(song) {
+  playlist = playlist.filter(s => s !== song);
+  console.log(`${song} removed from playlist`);
+}
+
+function showPlaylist() {
+  console.log("Playlist:", playlist.join(", "));
+}
+
+addSong("Song A");
+addSong("Song B");
+removeSong("Song A");
+showPlaylist();
