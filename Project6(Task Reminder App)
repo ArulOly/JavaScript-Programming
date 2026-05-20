@@ -1,0 +1,15 @@
+let tasks = [];
+
+function addTask(task, deadline) {
+  tasks.push({ task, deadline });
+}
+
+function showTasks() {
+  tasks.forEach(t => {
+    console.log(`${t.task} - due by ${t.deadline}`);
+  });
+}
+
+addTask("Finish coding project", "2026-05-25");
+addTask("Prepare EAE resume", "2026-05-22");
+showTasks();
