@@ -1,0 +1,27 @@
+// Email validation using regex
+function validateEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+// User database (mock)
+let users = [];
+
+function registerUser(name, email) {
+  if (validateEmail(email)) {
+    users.push({ name, email });
+    console.log(`✅ Welcome, ${name}! Your email (${email}) is valid and registered.`);
+  } else {
+    console.log(`❌ Sorry, ${name}. Please enter a valid email address.`);
+  }
+}
+
+function showUsers() {
+  console.log("Registered Users:");
+  users.forEach(u => console.log(`${u.name} - ${u.email}`));
+}
+
+// Example usage
+registerUser("Arul", "arul@example.com");
+registerUser("TestUser", "invalid-email@");
+showUsers();
