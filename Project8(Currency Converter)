@@ -1,0 +1,38 @@
+// Currency exchange rates (mock data)
+const rates = {
+  USD: { SGD: 1.35, EUR: 0.92 },
+  SGD: { USD: 0.74, EUR: 0.68 },
+  EUR: { USD: 1.09, SGD: 1.47 }
+};
+
+function convertCurrency(amount, from, to) {
+  if (rates[from] && rates[from][to]) {
+    let result = (amount * rates[from][to]).toFixed(2);
+    console.log(`${amount} ${from} = ${result} ${to}`);
+    return result;
+  } else {
+    console.log("Conversion rate not available.");
+    return null;
+  }
+}
+
+// Transaction history
+let history = [];
+
+function logConversion(amount, from, to) {
+  let converted = convertCurrency(amount, from, to);
+  if (converted) {
+    history.push({ amount, from, to, result: converted });
+  }
+}
+
+function showHistory() {
+  console.log("Conversion History:");
+  history.forEach(h => console.log(`${h.amount} ${h.from} → ${h.result} ${h.to}`));
+}
+
+// Example usage
+logConversion(100, "USD", "SGD");
+logConversion(50, "EUR", "USD");
+logConversion(200, "SGD", "EUR");
+showHistory();
